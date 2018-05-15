@@ -8,7 +8,7 @@ from django.views.generic import (
 )
 
 from .models import (
-	Phrase,
+    Phrase,
 )
 
 
@@ -35,4 +35,3 @@ class PhraseUpdateView(UpdateView):
 class PhraseListView(ListView):
 
     model = Phrase
-
