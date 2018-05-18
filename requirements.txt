@@ -3,3 +3,4 @@ django-model-utils>=2.0
 
 # SpaCy
 spacy==2.0.11
+djangorestframework>=3.8.0
