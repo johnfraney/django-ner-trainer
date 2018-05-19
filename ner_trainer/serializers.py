@@ -4,19 +4,20 @@ from rest_framework import serializers
 from .models import Entity, Phrase, PhraseEntity
 
 
-class EntitySerializer(serializers.HyperlinkedModelSerializer):
+class EntitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Entity
-        fields = ('url', 'name', 'label')
+        fields = ('name', 'label')
 
 
-class PhraseEntitySerializer(serializers.HyperlinkedModelSerializer):
+class PhraseEntitySerializer(serializers.ModelSerializer):
     class Meta:
         model = PhraseEntity
-        fields = ('url', 'id', 'phrase', 'entity', 'start_index', 'end_index')
+        fields = ('id', 'phrase', 'entity', 'start_index', 'end_index')
 
 
-class PhraseSerializer(serializers.HyperlinkedModelSerializer):
+class PhraseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Phrase
-        fields = ('url', 'id', 'text', 'skipped')
+        fields = ('id', 'text', 'skipped', 'entities')
+        depth = 1
