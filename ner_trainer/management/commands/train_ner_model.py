@@ -6,7 +6,7 @@ from ner_trainer.spacy_utils import train_ner
 
 
 class Command(BaseCommand):
-    help = 'Trains your custom SpaCy model'
+    help = 'Trains your custom spaCy model'
 
     def handle(self, *args, **options):
         model_directory = settings.MODEL_DIRECTORY

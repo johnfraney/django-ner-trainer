@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 
 class Command(BaseCommand):
-    help = 'Packages your custom SpaCy model'
+    help = 'Packages your custom spaCy model'
 
     def handle(self, *args, **options):
         if not os.path.exists('spacy_model'):

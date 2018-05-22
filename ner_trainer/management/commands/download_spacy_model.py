@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 
 class Command(BaseCommand):
-    help = 'Downloads one or more SpaCy models'
+    help = 'Downloads one or more spaCy models'
 
     def add_arguments(self, parser):
         parser.add_argument('model_code', nargs='+', type=str)
