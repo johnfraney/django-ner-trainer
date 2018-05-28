@@ -21,3 +21,7 @@ class PhraseSerializer(serializers.ModelSerializer):
         model = Phrase
         fields = ('id', 'text', 'skipped', 'entities')
         depth = 1
+
+
+class ModelTestSerializer(serializers.Serializer):
+    text = serializers.CharField()

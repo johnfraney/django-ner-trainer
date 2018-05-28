@@ -9,9 +9,9 @@ class Command(BaseCommand):
     help = 'Trains your custom spaCy model'
 
     def handle(self, *args, **options):
-        model_directory = settings.MODEL_DIRECTORY
-        model_name = settings.MODEL_NAME
-        train_iterations = settings.MODEL_TRAIN_ITERATIONS
+        model_directory = settings.NER_TRAINER_MODEL_DIRECTORY
+        model_name = settings.NER_TRAINER_MODEL_NAME
+        train_iterations = settings.NER_TRAINER_MODEL_TRAIN_ITERATIONS
         entity_labels = Entity.objects.values_list('label', flat=True)
         phrases = Phrase.tagged_objects.all()
         train_data = [p.as_spacy_train_data() for p in phrases]

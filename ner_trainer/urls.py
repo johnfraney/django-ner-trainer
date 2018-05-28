@@ -14,4 +14,5 @@ router.register(r'phrase_entities', views.PhraseEntityViewSet)
 app_name = 'ner_trainer'
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^test-ner/$', views.NERModelTestView.as_view()),
 ]

@@ -6,9 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 SETTINGS_PREFIX = 'NER_TRAINER_'
 
 DEFAULTS = {
-    'MODEL_DIRECTORY': 'spacy_model',
-    'MODEL_NAME': 'ner_model',
-    'MODEL_TRAIN_ITERATIONS': 20,
+    'NER_TRAINER_MODEL_DIRECTORY': 'spacy_model',
+    'NER_TRAINER_MODEL_NAME': 'ner_model',
+    'NER_TRAINER_MODEL_TRAIN_ITERATIONS': 20,
 }
 
 
