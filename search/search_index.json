@@ -1,0 +1,194 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Introduction\n\n\ndjango-ner-trainer\n is a set of Django models, management commands, and REST endpoints to help make it easier to train spaCy Named Entity Recognition models within Django.\n\n\nN.B.\n This package is designed to provide the minimum backend infrastructure you need to train an NER model. It isn't meant to be a full-featured application like \nProdigy\n. In other words, this plugin is bring-your-own-front-end.\n\n\nQuickstart\n\n\nInstall Django NER Trainer:\n\n\npip install django-ner-trainer\n\n\n\n\nAdd it to your \nINSTALLED_APPS\n:\n\n\nINSTALLED_APPS = (\n    ...\n    'ner_trainer',\n    ...\n)\n\n\n\n\nAdd Django NER Trainer's URL patterns:\n\n\nfrom ner_trainer import urls as ner_trainer_urls\n\n\nurlpatterns = [\n    ...\n    url(r'^', include(ner_trainer_urls)),\n    ...\n]\n\n\n\n\nFeatures\n\n\n\n\nManagement commands\n to download spaCy models, training a NER model, and packaging a NER model\n\n\nModels\n for storing phrases, entities, and tagged phrase entities\n\n\nREST Endpoints\n for performing CRUD actions on relevant models\n\n\n\n\nRunning Tests\n\n\nDoes the code actually work?\n\n\nsource <YOURVIRTUALENV>/bin/activate\n(myenv) $ pip install tox\n(myenv) $ tox",
+            "title": "Introduction"
+        },
+        {
+            "location": "/#introduction",
+            "text": "django-ner-trainer  is a set of Django models, management commands, and REST endpoints to help make it easier to train spaCy Named Entity Recognition models within Django.  N.B.  This package is designed to provide the minimum backend infrastructure you need to train an NER model. It isn't meant to be a full-featured application like  Prodigy . In other words, this plugin is bring-your-own-front-end.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/#quickstart",
+            "text": "Install Django NER Trainer:  pip install django-ner-trainer  Add it to your  INSTALLED_APPS :  INSTALLED_APPS = (\n    ...\n    'ner_trainer',\n    ...\n)  Add Django NER Trainer's URL patterns:  from ner_trainer import urls as ner_trainer_urls\n\n\nurlpatterns = [\n    ...\n    url(r'^', include(ner_trainer_urls)),\n    ...\n]",
+            "title": "Quickstart"
+        },
+        {
+            "location": "/#features",
+            "text": "Management commands  to download spaCy models, training a NER model, and packaging a NER model  Models  for storing phrases, entities, and tagged phrase entities  REST Endpoints  for performing CRUD actions on relevant models",
+            "title": "Features"
+        },
+        {
+            "location": "/#running-tests",
+            "text": "Does the code actually work?  source <YOURVIRTUALENV>/bin/activate\n(myenv) $ pip install tox\n(myenv) $ tox",
+            "title": "Running Tests"
+        },
+        {
+            "location": "/management_commands/",
+            "text": "Management Commands\n\n\ndownload_spacy_model\n\n\nDownloads one or more spaCy models. See \nspaCy's \"Models & Languages\" docs\n for more information.\n\n\nUsage\n\n\nDownload one model:\n\n\n./manage.py download_spacy_model en_core_web_md\n\n\n\n\nDownload multiple models:\n\n\n./manage.py download_spacy_model en de fr\n\n\n\n\ntrain_ner_model\n\n\nTrains your custom spaCy model using settings specified in your project configuration. See \nspaCy's \"Training the named entity recognizer\" docs\n for more information.\n\n\nSettings\n\n\nNER_TRAINER_MODEL_DIRECTORY\nNER_TRAINER_MODEL_NAME\nNER_TRAINER_MODEL_TRAIN_ITERATIONS\n\n\n\n\nUsage\n\n\n./manage.py train_ner_model\n\n\n\n\npackage_ner_model\n\n\nPackages your custom spaCy model. See \nspaCy's \"Generating a model package\" docs\n for more information.\n\n\nUsage\n\n\n./manage.py package_ner_model\n\n\n\n\nSettings\n\n\nNER_TRAINER_MODEL_DIRECTORY",
+            "title": "Management Commands"
+        },
+        {
+            "location": "/management_commands/#management-commands",
+            "text": "",
+            "title": "Management Commands"
+        },
+        {
+            "location": "/management_commands/#download_spacy_model",
+            "text": "Downloads one or more spaCy models. See  spaCy's \"Models & Languages\" docs  for more information.",
+            "title": "download_spacy_model"
+        },
+        {
+            "location": "/management_commands/#usage",
+            "text": "Download one model:  ./manage.py download_spacy_model en_core_web_md  Download multiple models:  ./manage.py download_spacy_model en de fr",
+            "title": "Usage"
+        },
+        {
+            "location": "/management_commands/#train_ner_model",
+            "text": "Trains your custom spaCy model using settings specified in your project configuration. See  spaCy's \"Training the named entity recognizer\" docs  for more information.",
+            "title": "train_ner_model"
+        },
+        {
+            "location": "/management_commands/#settings",
+            "text": "NER_TRAINER_MODEL_DIRECTORY\nNER_TRAINER_MODEL_NAME\nNER_TRAINER_MODEL_TRAIN_ITERATIONS",
+            "title": "Settings"
+        },
+        {
+            "location": "/management_commands/#usage_1",
+            "text": "./manage.py train_ner_model",
+            "title": "Usage"
+        },
+        {
+            "location": "/management_commands/#package_ner_model",
+            "text": "Packages your custom spaCy model. See  spaCy's \"Generating a model package\" docs  for more information.",
+            "title": "package_ner_model"
+        },
+        {
+            "location": "/management_commands/#usage_2",
+            "text": "./manage.py package_ner_model",
+            "title": "Usage"
+        },
+        {
+            "location": "/management_commands/#settings_1",
+            "text": "NER_TRAINER_MODEL_DIRECTORY",
+            "title": "Settings"
+        },
+        {
+            "location": "/models/",
+            "text": "Models\n\n\nEntity\n\n\nEntity\n is the model that puts the 'E' in 'NER'. \nspaCy defines an Entity\n as \"a 'real-world object' that's assigned a name \u2013 for example, a person, a country, a product or a book title\".\n\n\nFields\n\n\n\n\nlabel\n (primary key) - machine-friendly representation of the Entity as used in spaCy\n\n\nname\n - user-friendly representation of the Entity\n\n\n\n\nExample\n\n\nfrom ner_trainer.models import Entity\n\nentity = Entity.objects.create(\n  label='PROVINCE',\n  name='Province'\n)\n\n\n\n\nPhrase\n\n\nPhrase\n is text that may contain zero or more Entities.\n\n\nFields\n\n\n\n\ntext\n (unique) - phrase text. This field is unique to prevent duplicate Phrases during bulk imports.\n\n\nskipped\n - whether the phrase is skipped. Useful when a phrase could be bulk imported more than once.\n\n\n\n\nMethods\n\n\n\n\nas_spacy_train_data()\n - returns a \nspacy.gold\n-compatible representation of the tagged Phrase:\n\n\n\n\n('I like London and Berlin.', {\n    'entities': [(7, 13, 'LOC'), (18, 24, 'LOC')]\n})\n\n\n\n\nExample\n\n\nfrom ner_trainer.models import Phrase\n\nphrase = Phrase.objects.create(\n  text=\"Nova Scotia is one of Canada's three maritime provinces.\"\n)\n\n\n\n\nCustom Managers\n\n\n\n\nactive_objects\n - returns a queryset of all \nPhrase\n instances that haven't been skipped:\n\n\n\n\n>>> Phrase.active_objects.all() == Phrase.objects.filter(skipped=False)\nTrue\n\n\n\n\n\n\ntagged_objects\n - returns a queryset of active \nPhrase\n instances that have been tagged (i.e., have related \nPhraseEntity\n objects):\n\n\n\n\n>>> Phrase.tagged_objects.all() == Phrase.objects.filter(skipped=False, entities__isnull=False)\nTrue\n\n\n\n\nPhraseEntity\n\n\nA \nPhraseEntity\n joins an \nEntity\n to a \nPhrase\n and stores where in the phrase that entity is located.\n\n\nFields\n\n\n\n\nphrase\n - \nPhrase\n containing this named entity\n\n\nentity\n - \nEntity\n defined between \nstart_index\n and \nend_index\n\n\nstart_index\n - start character index of the \nEntity\n in the \nPhrase\n\n\nend_index\n - end character index of the \nEntity\n in the \nPhrase\n\n\n\n\nMethods\n\n\n\n\nas_spacy_tuple()\n - returns a tuple of \nstart_index\n, \nend_index\n, and \nentity.label\n for use training the spaCy NER model.",
+            "title": "Models"
+        },
+        {
+            "location": "/models/#models",
+            "text": "",
+            "title": "Models"
+        },
+        {
+            "location": "/models/#entity",
+            "text": "Entity  is the model that puts the 'E' in 'NER'.  spaCy defines an Entity  as \"a 'real-world object' that's assigned a name \u2013 for example, a person, a country, a product or a book title\".",
+            "title": "Entity"
+        },
+        {
+            "location": "/models/#fields",
+            "text": "label  (primary key) - machine-friendly representation of the Entity as used in spaCy  name  - user-friendly representation of the Entity",
+            "title": "Fields"
+        },
+        {
+            "location": "/models/#example",
+            "text": "from ner_trainer.models import Entity\n\nentity = Entity.objects.create(\n  label='PROVINCE',\n  name='Province'\n)",
+            "title": "Example"
+        },
+        {
+            "location": "/models/#phrase",
+            "text": "Phrase  is text that may contain zero or more Entities.",
+            "title": "Phrase"
+        },
+        {
+            "location": "/models/#fields_1",
+            "text": "text  (unique) - phrase text. This field is unique to prevent duplicate Phrases during bulk imports.  skipped  - whether the phrase is skipped. Useful when a phrase could be bulk imported more than once.",
+            "title": "Fields"
+        },
+        {
+            "location": "/models/#methods",
+            "text": "as_spacy_train_data()  - returns a  spacy.gold -compatible representation of the tagged Phrase:   ('I like London and Berlin.', {\n    'entities': [(7, 13, 'LOC'), (18, 24, 'LOC')]\n})",
+            "title": "Methods"
+        },
+        {
+            "location": "/models/#example_1",
+            "text": "from ner_trainer.models import Phrase\n\nphrase = Phrase.objects.create(\n  text=\"Nova Scotia is one of Canada's three maritime provinces.\"\n)",
+            "title": "Example"
+        },
+        {
+            "location": "/models/#custom-managers",
+            "text": "active_objects  - returns a queryset of all  Phrase  instances that haven't been skipped:   >>> Phrase.active_objects.all() == Phrase.objects.filter(skipped=False)\nTrue   tagged_objects  - returns a queryset of active  Phrase  instances that have been tagged (i.e., have related  PhraseEntity  objects):   >>> Phrase.tagged_objects.all() == Phrase.objects.filter(skipped=False, entities__isnull=False)\nTrue",
+            "title": "Custom Managers"
+        },
+        {
+            "location": "/models/#phraseentity",
+            "text": "A  PhraseEntity  joins an  Entity  to a  Phrase  and stores where in the phrase that entity is located.",
+            "title": "PhraseEntity"
+        },
+        {
+            "location": "/models/#fields_2",
+            "text": "phrase  -  Phrase  containing this named entity  entity  -  Entity  defined between  start_index  and  end_index  start_index  - start character index of the  Entity  in the  Phrase  end_index  - end character index of the  Entity  in the  Phrase",
+            "title": "Fields"
+        },
+        {
+            "location": "/models/#methods_1",
+            "text": "as_spacy_tuple()  - returns a tuple of  start_index ,  end_index , and  entity.label  for use training the spaCy NER model.",
+            "title": "Methods"
+        },
+        {
+            "location": "/rest_endpoints/",
+            "text": "REST Endpoints\n\n\ndjango-ner-trainer\n ships with REST endpoints using the excellent \nDjango REST Framework\n.\n\n\nEvery endpoint save \ntest-ner/\n is a Django REST Framework ViewSet. See the \nDRF docs on ViewSets\n for more information\n\n\nentities/\n\n\nEntity\n ViewSet\n\n\nphrases/\n\n\nPhrase\n ViewSet\n\n\nphrases/active/\n\n\nList of Phrases that haven't been skipped.\n\n\nphrases/tagged/\n\n\nList of active Phrases that have been tagged (i.e., have \nPhraseEntity\n objects associated with them).\n\n\nphrase_entities/\n\n\nPhraseEntity\n ViewSet\n\n\ntest-ner/\n\n\nPOST\n endpoint that accepts a \ntext\n parameter and returns text tagged using your NER model.",
+            "title": "REST Endpoints"
+        },
+        {
+            "location": "/rest_endpoints/#rest-endpoints",
+            "text": "django-ner-trainer  ships with REST endpoints using the excellent  Django REST Framework .  Every endpoint save  test-ner/  is a Django REST Framework ViewSet. See the  DRF docs on ViewSets  for more information",
+            "title": "REST Endpoints"
+        },
+        {
+            "location": "/rest_endpoints/#entities",
+            "text": "Entity  ViewSet",
+            "title": "entities/"
+        },
+        {
+            "location": "/rest_endpoints/#phrases",
+            "text": "Phrase  ViewSet",
+            "title": "phrases/"
+        },
+        {
+            "location": "/rest_endpoints/#phrasesactive",
+            "text": "List of Phrases that haven't been skipped.",
+            "title": "phrases/active/"
+        },
+        {
+            "location": "/rest_endpoints/#phrasestagged",
+            "text": "List of active Phrases that have been tagged (i.e., have  PhraseEntity  objects associated with them).",
+            "title": "phrases/tagged/"
+        },
+        {
+            "location": "/rest_endpoints/#phrase_entities",
+            "text": "PhraseEntity  ViewSet",
+            "title": "phrase_entities/"
+        },
+        {
+            "location": "/rest_endpoints/#test-ner",
+            "text": "POST  endpoint that accepts a  text  parameter and returns text tagged using your NER model.",
+            "title": "test-ner/"
+        },
+        {
+            "location": "/settings/",
+            "text": "Settings\n\n\n# Path where your NER model will be saved\nNER_TRAINER_MODEL_DIRECTORY = 'spacy_model'\n\n# Your NER model name used in spacy.load()\nNER_TRAINER_MODEL_NAME = 'ner_model'\n\n# Number of iterations to use during training\nNER_TRAINER_MODEL_TRAIN_ITERATIONS = 20",
+            "title": "Settings"
+        },
+        {
+            "location": "/settings/#settings",
+            "text": "# Path where your NER model will be saved\nNER_TRAINER_MODEL_DIRECTORY = 'spacy_model'\n\n# Your NER model name used in spacy.load()\nNER_TRAINER_MODEL_NAME = 'ner_model'\n\n# Number of iterations to use during training\nNER_TRAINER_MODEL_TRAIN_ITERATIONS = 20",
+            "title": "Settings"
+        }
+    ]
+}
