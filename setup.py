@@ -42,7 +42,7 @@ if sys.argv[-1] == 'tag':
     sys.exit()
 
 readme = open('README.md').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+history = open('HISTORY.md').read()
 
 setup(
     name='django-ner-trainer',
@@ -58,7 +58,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "django-model-utils>=2.0",
-        "spacy>=2.0",
+        "spacy>=2.0<3.0",
+        "djangorestframework>=3.8.0"
     ],
     license="MIT",
     zip_safe=False,
