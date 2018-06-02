@@ -49,6 +49,7 @@ setup(
     version=version,
     description="""Tools for training spaCy Named Entity Recognition models in Django""",
     long_description=readme + '\n\n' + history,
+    long_description_content_type="text/markdown",
     author='John Franey',
     author_email='johnfraney@gmail.com',
     url='https://github.com/johnfraney/django-ner-trainer',

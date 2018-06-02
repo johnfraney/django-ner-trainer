@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from django.urls import reverse
 from model_utils.models import TimeStampedModel
 
 from .validators import validate_all_caps

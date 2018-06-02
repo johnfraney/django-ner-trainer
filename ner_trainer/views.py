@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import spacy
-from django.http import HttpResponse
 from pathlib import Path
 from rest_framework import viewsets
 from rest_framework.decorators import action
@@ -75,7 +74,7 @@ class NERModelTestView(APIView):
         return 'NER Model Test'
 
     def get(self, request, format=None):
-        return Response(['Post a text field to test the NER model.'])
+        return Response("Post a text field to test the NER model.")
 
     def post(self, request):
         text = request.data.get('text', None)

@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from ner_trainer.conf import settings
 from ner_trainer.models import Entity, Phrase
@@ -15,7 +15,9 @@ class Command(BaseCommand):
         entity_labels = Entity.objects.values_list('label', flat=True)
         phrases = Phrase.tagged_objects.all()
         train_data = [p.as_spacy_train_data() for p in phrases]
-        self.stdout.write(self.style.NOTICE(f'Training NER model with {train_iterations} iterations'))
+        self.stdout.write(self.style.NOTICE(
+            'Training NER model with {} iterations'.format(train_iterations)
+        ))
         train_ner(entity_labels=entity_labels,
                   train_data=train_data,
                   model_name=model_name,

@@ -1,7 +1,6 @@
 # Adapted from https://github.com/carltongibson/django-filter/blob/master/django_filters/conf.py
 from django.conf import settings as dj_settings
 from django.core.signals import setting_changed
-from django.utils.translation import ugettext_lazy as _
 
 SETTINGS_PREFIX = 'NER_TRAINER_'
 
@@ -56,4 +55,3 @@ class Settings(object):
 
 settings = Settings()
 setting_changed.connect(settings.change_setting)
-
