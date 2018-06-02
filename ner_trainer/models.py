@@ -42,9 +42,6 @@ class Entity(TimeStampedModel):
     name = models.CharField(max_length=100)
     label = models.CharField(max_length=100, validators=[validate_all_caps], primary_key=True)
 
-    def get_absolute_url(self):
-        return reverse('entity-recognizer:update', kwargs={'pk': self.label})
-
     def __str__(self):
         return self.name
 
