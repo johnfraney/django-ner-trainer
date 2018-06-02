@@ -1,0 +1,12 @@
+site_name: Django NER Trainer
+repo_name: 'johnfraney/django-ner-trainer'
+repo_url: 'https://github.com/johnfraney/django-ner-trainer'
+theme:
+  name: 'material'
+  logo:
+    icon: 'trainer'
+  palette:
+    primary: 'blue grey'
+    accent: 'blue'
+
+dev_addr: '127.0.0.1:8008'

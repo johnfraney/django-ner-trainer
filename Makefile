@@ -42,13 +42,9 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	open htmlcov/index.html
 
-docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/django-ner-trainer.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ ner_trainer
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
+docs: ## generate documentation
+	mkdocs build --clean
+	$(BROWSER) site/index.html
 
 release: clean ## package and upload a release
 	python setup.py sdist upload

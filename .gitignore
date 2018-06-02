@@ -45,15 +45,17 @@ htmlcov
 .project
 .pydevproject
 
-# Pycharm/Intellij
+# IDEs
 .idea
+.vscode
 
 # Complexity
 output/*.html
 output/*/index.html
 
-# Sphinx
+# Docs
 docs/_build
+site/
 
 # Example app
 example/db.sqlite3
