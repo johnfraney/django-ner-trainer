@@ -37,10 +37,10 @@ test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source ner_trainer runtests.py tests
+	coverage run runtests.py
 	coverage report -m
 	coverage html
-	open htmlcov/index.html
+	$(BROWSER) htmlcov/index.html
 
 docs: ## generate documentation
 	mkdocs build --clean
