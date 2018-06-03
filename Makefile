@@ -47,8 +47,9 @@ docs: ## generate documentation
 	$(BROWSER) site/index.html
 
 release: clean ## package and upload a release
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	python setup.py sdist
+	python setup.py bdist_wheel
+	twine upload dist/*
 
 sdist: clean ## package
 	python setup.py sdist
